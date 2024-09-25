@@ -11,11 +11,11 @@ This diagram shows:
 ```mermaid
 
 graph TD
-  A[DataPassingDemo]
-  B[DisplayCount]
-  C[IncrementButton]
-  D[count state]
-  E[handleIncrement function]
+  A[DataPassingDemo]:::highlight
+  B[DisplayCount]:::highlight
+  C[IncrementButton]:::highlight
+  D[count state]:::highlight
+  E[handleIncrement function]:::highlight
   
   A -->|count prop| B
   A -->|onIncrement prop| C
@@ -28,5 +28,7 @@ graph TD
   style C fill:#bfb,stroke:#333,stroke-width:2px
   style D fill:#ff9,stroke:#333,stroke-width:2px
   style E fill:#f99,stroke:#333,stroke-width:2px
+
+  classDef highlight font-size:18px,font-weight:bold,color:#000;
 
   ```
