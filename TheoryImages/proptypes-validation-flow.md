@@ -12,10 +12,10 @@ This diagram shows:
 ```mermaid
 
 graph TD
-  A[Parent Component]
-  B[Child Component]
-  C[PropTypes Validation]
-  D[Console Warnings]
+  A[Parent Component]:::highlight
+  B[Child Component]:::highlight
+  C[PropTypes Validation]:::highlight
+  D[Console Warnings]:::highlight
   
   A -->|Props| B
   B -->|Props| C
@@ -34,5 +34,8 @@ graph TD
   style D fill:#fbb,stroke:#333,stroke-width:4px
   style E fill:#ff9,stroke:#333,stroke-width:2px
   style F fill:#f99,stroke:#333,stroke-width:2px
+
+  
+   classDef highlight font-size:18px,font-weight:bold,color:#000;
 
   ```
