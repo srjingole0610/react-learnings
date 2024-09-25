@@ -1,10 +1,13 @@
 ## **React Course Outline: Beginner to Advanced**
 
+## Explain in React using code, theory, diagram and animation in simple terms
+
 ### **Module 1: Introduction to React**
 - What is React?
 - Why use React?
 - Setting up the React environment (Node.js, npm, and create-react-app)
 - React Components: Functional vs. Class Components
+- JSX: Introduction and Basic Syntax
   
 #### **Coding Questions:**
 1. Create a simple React app that displays "Hello World".
