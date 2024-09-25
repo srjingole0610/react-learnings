@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types'
 
-
 function Navbar(props) {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
-      <div className="container-fluid">
-        <a className="navbar-brand" href="/">
+    <nav className="navbar navbar-expand-lg bg-dark navbar-dark shadow-lg rounded-3">
+      <div className="container-fluid py-2 px-4">
+        <a className="navbar-brand text-light fw-bold fs-3" href="/">
           {props.title}
         </a>
         <button
@@ -34,12 +33,12 @@ function Navbar(props) {
           </ul>
           <form className="d-flex" role="search">
             <input
-              className="form-control me-2"
+              className="form-control me-2 border-0 rounded-3 bg-light"
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
-            <button className="btn btn-outline-success" type="submit">
+            <button className="btn btn-outline-light border-0 rounded-3" type="submit">
               {props.search}
             </button>
           </form>
@@ -63,3 +62,4 @@ Navbar.defaultProps = {
   };
 
 export default Navbar;
+
