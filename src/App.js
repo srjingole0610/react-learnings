@@ -1,13 +1,11 @@
-import "./App.css";
-import Navbar from "./components/Navbar";
 
-// let name = "suraj";
+import Navbar from "./components/Navbar";
 function App() {
   return (
-    <>
+    <div className="container">
      <Navbar title="TextUtlis" homeText = "Home" aboutText = "About" />
-     {/* <Navbar /> */}
-    </>
+    </div>
+    
   );
 }
 
