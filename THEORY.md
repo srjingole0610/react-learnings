@@ -388,66 +388,67 @@ We'll focus on the first two methods as they are the most common and fundamental
   5. Array validation: `courses` is defined as an array of strings.
   6. Default props: We set default values for optional props using `UserProfile.defaultProps`.
 
-
 - Understanding React State
-    1. Theory: Understanding React State:
-        - React State is a way to manage and store data within a component that can change over time. Key points about React State:
 
-            - It's mutable (changeable) data specific to a component
-            - When state changes, React re-renders the component
-            - State is initialized in the constructor for class components or with the useState hook for functional components
-            - State should be updated using setState for class components or the state setter function for hooks
-            - State updates may be asynchronous
-            - State can be passed down to child components as props
+  1. Theory: Understanding React State:
+
+     - React State is a way to manage and store data within a component that can change over time. Key points about React State:
+
+       - It's mutable (changeable) data specific to a component
+       - When state changes, React re-renders the component
+       - State is initialized in the constructor for class components or with the useState hook for functional components
+       - State should be updated using setState for class components or the state setter function for hooks
+       - State updates may be asynchronous
+       - State can be passed down to child components as props
 
 2. Code Example:
 
-  - Let's create a React component that demonstrates the use of state:
+- Let's create a React component that demonstrates the use of state:
 
-        import React, { useState } from 'react'
-        export default function StateDemo() {
-        const [count, setCount] = useState(0)
-        const [text, setText] = useState('')
+      import React, { useState } from 'react'
+      export default function StateDemo() {
+      const [count, setCount] = useState(0)
+      const [text, setText] = useState('')
 
-        const incrementCount = () => {
-            setCount(prevCount => prevCount + 1)
-        }
+      const incrementCount = () => {
+          setCount(prevCount => prevCount + 1)
+      }
 
-        const handleTextChange = (event) => {
-            setText(event.target.value)
-        }
+      const handleTextChange = (event) => {
+          setText(event.target.value)
+      }
 
-        return (
-            <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-md">
-            <h1 className="text-2xl font-bold mb-4">Understanding React State</h1>
-            
-            <div className="mb-6">
-                <h2 className="text-xl font-semibold mb-2">Counter Example</h2>
-                <p className="mb-2">Count: {count}</p>
-                <button 
-                onClick={incrementCount}
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-                >
-                Increment
-                </button>
-            </div>
+      return (
+          <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-md">
+          <h1 className="text-2xl font-bold mb-4">Understanding React State</h1>
 
-            <div>
-                <h2 className="text-xl font-semibold mb-2">Input Example</h2>
-                <input
-                type="text"
-                value={text}
-                onChange={handleTextChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Type something..."
-                />
-                <p className="mt-2">You typed: {text}</p>
-            </div>
-            </div>
-        )
-        }
+          <div className="mb-6">
+              <h2 className="text-xl font-semibold mb-2">Counter Example</h2>
+              <p className="mb-2">Count: {count}</p>
+              <button
+              onClick={incrementCount}
+              className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+              >
+              Increment
+              </button>
+          </div>
 
-- This example demonstrates several key concepts of React State:
+          <div>
+              <h2 className="text-xl font-semibold mb-2">Input Example</h2>
+              <input
+              type="text"
+              value={text}
+              onChange={handleTextChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Type something..."
+              />
+              <p className="mt-2">You typed: {text}</p>
+          </div>
+          </div>
+      )
+      }
+
+  - This example demonstrates several key concepts of React State:
 
     1. Using the `useState` hook to create state variables (`count` and `text`)
     2. Initializing state with default values (0 for count, '' for text)
@@ -455,3 +456,112 @@ We'll focus on the first two methods as they are the most common and fundamental
     4. Using a function to update state based on the previous state (`setCount(prevCount => prevCount + 1)`)
     5. Handling user input to update state (`handleTextChange`)
     6. Rendering state values in the component
+
+- Managing State in Class and Functional Components
+
+  1.  Theory: Managing State in Class and Functional Components
+
+      - React allows you to manage state in both Class and Functional components, but the syntax and methods differ:
+
+        - Class Components:
+
+          - Use a constructor to initialize state
+          - Use `this.state` to access state
+          - Use `this.setState()` to update state
+          - Have lifecycle methods like `componentDidMount`, `componentDidUpdate`, etc.
+
+        - Functional Components:
+
+          - Use the `useState` hook to create and manage state
+          - Each piece of state is a separate variable
+          - Use setter functions returned by `useState` to update state
+          - Use the `useEffect` hook for side effects (similar to lifecycle methods)
+
+  2.  Code Example:
+
+      - Let's create two versions of a counter component, one using a Class component and another using a Functional component:
+
+              import React, { useState, useEffect } from 'react'
+
+              // Class Component
+              class ClassCounter extends React.Component {
+              constructor(props) {
+                  super(props)
+                  this.state = {
+                  count: 0
+                  }
+              }
+
+              componentDidMount() {
+                  document.title = `Class Count: ${this.state.count}`
+              }
+
+              componentDidUpdate() {
+                  document.title = `Class Count: ${this.state.count}`
+              }
+
+              incrementCount = () => {
+                  this.setState(prevState => ({
+                  count: prevState.count + 1
+                  }))
+              }
+
+              render() {
+                  return (
+                  <div className="bg-blue-100 p-6 rounded-lg mb-4">
+                      <h2 className="text-xl font-bold mb-2">Class Component Counter</h2>
+                      <p className="mb-2">Count: {this.state.count}</p>
+                      <button
+                      onClick={this.incrementCount}
+                      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                      >
+                      Increment
+                      </button>
+                  </div>
+                  )
+              }
+              }
+
+              // Functional Component
+              function FunctionalCounter() {
+              const [count, setCount] = useState(0)
+
+              useEffect(() => {
+                  document.title = `Functional Count: ${count}`
+              }, [count])
+
+              const incrementCount = () => {
+                  setCount(prevCount => prevCount + 1)
+              }
+
+              return (
+                  <div className="bg-green-100 p-6 rounded-lg">
+                  <h2 className="text-xl font-bold mb-2">Functional Component Counter</h2>
+                  <p className="mb-2">Count: {count}</p>
+                  <button
+                      onClick={incrementCount}
+                      className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                  >
+                      Increment
+                  </button>
+                  </div>
+              )
+              }
+
+              // Parent component to render both counters
+              export default function StateManagementDemo() {
+              return (
+                  <div className="max-w-md mx-auto mt-10">
+                  <h1 className="text-2xl font-bold mb-4">State Management in React</h1>
+                  <ClassCounter />
+                  <FunctionalCounter />
+                  </div>
+              )
+              }
+
+      - This example demonstrates:
+
+        - Initializing state in both Class and Functional components
+        - Updating state in response to user actions (button clicks)
+        - Using lifecycle methods (Class) and hooks (Functional) to perform side effects
+        - Rendering state in the component's output
