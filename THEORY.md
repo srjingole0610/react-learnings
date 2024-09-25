@@ -565,3 +565,94 @@ We'll focus on the first two methods as they are the most common and fundamental
         - Updating state in response to user actions (button clicks)
         - Using lifecycle methods (Class) and hooks (Functional) to perform side effects
         - Rendering state in the component's output
+
+- Handling Events
+
+  1.  Theory: Handling Events in React
+
+      - Event handling in React is similar to handling events in DOM, but with some syntactical differences:
+
+        - React events are named using camelCase (e.g., onClick instead of onclick)
+        - Event handlers are passed as functions rather than strings
+        - You can't return false to prevent default behavior; you must call preventDefault explicitly
+        - React uses a synthetic event system for consistent behavior across browsers
+        - Event handlers have access to the React event object, which is a wrapper around the native event
+
+  2.  Code Example:
+
+      - Let's create a React component that demonstrates various event handling techniques:
+
+              import React, { useState } from 'react'
+              export default function EventHandlingDemo() {
+              const [clickCount, setClickCount] = useState(0)
+              const [inputValue, setInputValue] = useState('')
+              const [isHovering, setIsHovering] = useState(false)
+
+              const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+                  setClickCount(prevCount => prevCount + 1)
+                  console.log('Button clicked!', event.clientX, event.clientY)
+              }
+
+              const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+                  setInputValue(event.target.value)
+              }
+
+              const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+                  event.preventDefault()
+                  alert(`Form submitted with value: ${inputValue}`)
+              }
+
+              const handleMouseEnter = () => setIsHovering(true)
+              const handleMouseLeave = () => setIsHovering(false)
+
+              return (
+                  <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-md">
+                  <h1 className="text-2xl font-bold mb-4">Event Handling in React</h1>
+
+                  <div className="mb-6">
+                      <button
+                      onClick={handleClick}
+                      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                      >
+                      Click me!
+                      </button>
+                      <p className="mt-2">Button clicked {clickCount} times</p>
+                  </div>
+
+                  <form onSubmit={handleSubmit} className="mb-6">
+                      <input
+                      type="text"
+                      value={inputValue}
+                      onChange={handleChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="Type something..."
+                      />
+                      <button
+                      type="submit"
+                      className="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                      >
+                      Submit
+                      </button>
+                  </form>
+
+                  <div
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                      className={`p-4 rounded transition-colors duration-300 ${
+                      isHovering ? 'bg-yellow-200' : 'bg-gray-200'
+                      }`}
+                  >
+                      Hover over me!
+                  </div>
+                  </div>
+              )
+              }
+
+      - This example demonstrates several key concepts of event handling in React:
+
+        1. Click events with `onClick`
+        2. Form input handling with `onChange`
+        3. Form submission with `onSubmit` and `preventDefault()`
+        4. Mouse events with `onMouseEnter` and `onMouseLeave`
+        5. Using state to track event-related data (click count, input value, hover state)
+        6. Accessing the event object in event handlers
