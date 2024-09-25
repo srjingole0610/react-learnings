@@ -49,95 +49,95 @@
 
   1. Functional Components:
 
-  1. Also known as stateless components or function components
-  1. Written as JavaScript functions
-  1. Can use Hooks to manage state and side effects
-  1. Simpler syntax and easier to understand
-  1. Preferred in modern React development
+     1. Also known as stateless components or function components
+     2. Written as JavaScript functions
+     3. Can use Hooks to manage state and side effects
+     4. Simpler syntax and easier to understand
+     5. Preferred in modern React development
 
   1. Class Components:
 
-  1. Also known as stateful components
-  1. Written as ES6 classes
-  1. Can have their own state and lifecycle methods
-  1. More complex syntax
-  1. Less commonly used in modern React development, but still supported
+     1. Also known as stateful components
+     2. Written as ES6 classes
+     3. Can have their own state and lifecycle methods
+     4. More complex syntax
+     5. Less commonly used in modern React development, but still supported
 
   The main differences lie in their syntax, how they manage state, and how they handle lifecycle events.
 
   Let's create examples of both Functional and Class components to illustrate their differences:
 
-            import React, { useState, useEffect } from 'react'
-            // Functional Component
-            function FunctionalCounter() {
-            const [count, setCount] = useState(0)
+              import React, { useState, useEffect } from 'react'
+              // Functional Component
+              function FunctionalCounter() {
+              const [count, setCount] = useState(0)
 
-            useEffect(() => {
-                document.title = `Count: ${count}`
-            }, [count])
+              useEffect(() => {
+                  document.title = `Count: ${count}`
+              }, [count])
 
-            return (
-                <div className="p-4 bg-blue-100 rounded-lg mb-4">
-                <h2 className="text-xl font-bold mb-2">Functional Counter</h2>
-                <p>Count: {count}</p>
-                <button
-                    onClick={() => setCount(count + 1)}
-                    className="bg-blue-500 text-white px-4 py-2 rounded mt-2 hover:bg-blue-600"
-                >
-                    Increment
-                </button>
-                </div>
-            )
-            }
+              return (
+                  <div className="p-4 bg-blue-100 rounded-lg mb-4">
+                  <h2 className="text-xl font-bold mb-2">Functional Counter</h2>
+                  <p>Count: {count}</p>
+                  <button
+                      onClick={() => setCount(count + 1)}
+                      className="bg-blue-500 text-white px-4 py-2 rounded mt-2 hover:bg-blue-600"
+                  >
+                      Increment
+                  </button>
+                  </div>
+              )
+              }
 
-            // Class Component
-            class ClassCounter extends React.Component {
-            constructor(props) {
-                super(props)
-                this.state = { count: 0 }
-            }
+              // Class Component
+              class ClassCounter extends React.Component {
+              constructor(props) {
+                  super(props)
+                  this.state = { count: 0 }
+              }
 
-            componentDidUpdate() {
-                document.title = `Count: ${this.state.count}`
-            }
+              componentDidUpdate() {
+                  document.title = `Count: ${this.state.count}`
+              }
 
-            render() {
-                return (
-                <div className="p-4 bg-green-100 rounded-lg">
-                    <h2 className="text-xl font-bold mb-2">Class Counter</h2>
-                    <p>Count: {this.state.count}</p>
-                    <button
-                    onClick={() => this.setState({ count: this.state.count + 1 })}
-                    className="bg-green-500 text-white px-4 py-2 rounded mt-2 hover:bg-green-600"
-                    >
-                    Increment
-                    </button>
-                </div>
-                )
-            }
-            }
+              render() {
+                  return (
+                  <div className="p-4 bg-green-100 rounded-lg">
+                      <h2 className="text-xl font-bold mb-2">Class Counter</h2>
+                      <p>Count: {this.state.count}</p>
+                      <button
+                      onClick={() => this.setState({ count: this.state.count + 1 })}
+                      className="bg-green-500 text-white px-4 py-2 rounded mt-2 hover:bg-green-600"
+                      >
+                      Increment
+                      </button>
+                  </div>
+                  )
+              }
+              }
 
-            // Parent component to render both counters
-            export default function ComponentComparison() {
-            return (
-                <div className="max-w-md mx-auto mt-8">
-                <h1 className="text-2xl font-bold mb-4">React Components Comparison</h1>
-                <FunctionalCounter />
-                <ClassCounter />
-                </div>
-            )
-            }
+              // Parent component to render both counters
+              export default function ComponentComparison() {
+              return (
+                  <div className="max-w-md mx-auto mt-8">
+                  <h1 className="text-2xl font-bold mb-4">React Components Comparison</h1>
+                  <FunctionalCounter />
+                  <ClassCounter />
+                  </div>
+              )
+              }
 
-  This example demonstrates:
-  A Functional Component using the useState and useEffect hooks
-  A Class Component using state and componentDidUpdate lifecycle method
-  Both components implement the same functionality (a counter that updates the document title)
-  The syntax and structural differences between the two types of components
+  This example demonstrates: 1. A Functional Component using the useState and useEffect hooks 2. A Class Component using state and componentDidUpdate lifecycle method 3. Both components implement the same functionality (a counter that updates the document title) 4. The syntax and structural differences between the two types of components
+  <br><br>
 
 - JSX: Introduction and Basic Syntax
 
   1.  Theory: Introduction to JSX
-      JSX is a syntax extension for JavaScript that looks similar to XML or HTML. It was created by Facebook for use with React. JSX allows you to write HTML-like code in your JavaScript files, making it easier to describe what the UI should look like. Key points about JSX:
+
+      - JSX is a syntax extension for JavaScript that looks similar to XML or HTML. It was created by Facebook for use with React. JSX allows you to write HTML-like code in your JavaScript files, making it easier to describe what the UI should look like.
+
+      Key points about JSX:
 
       - It's not required for React, but it's highly recommended and widely used.
       - It allows you to mix JavaScript and HTML-like syntax in the same file.
@@ -178,7 +178,8 @@
                       )
                   }
 
-          This example demonstrates several key features of JSX:
+      This example demonstrates several key features of JSX:
+
           1. Embedding expressions: `{name}`, `{list.map(...)}`
           2. Using JavaScript variables to hold JSX: `const greeting = <h1>Hello, {name}!</h1>`
           3. Using JSX in return statements
@@ -261,7 +262,7 @@ In React, data can be passed between components in several ways:
 
 We'll focus on the first two methods as they are the most common and fundamental to React.
 
-2. Code Example:
+2.  Code Example:
     Let's create a React application that demonstrates passing data between components:
 
         import React, { useState } from 'react'
@@ -304,84 +305,85 @@ We'll focus on the first two methods as they are the most common and fundamental
         }
 
     This example demonstrates several key concepts of passing data between components:
+
     1. Passing data down via props: The `count` state is passed from `DataPassingDemo` to `DisplayCount`.
     2. Passing functions as props: The `handleIncrement` function is passed to `IncrementButton` as `onIncrement`.
     3. Lifting state up: The `count` state is managed in the parent component, allowing it to be shared between children.
     4. Updating shared state: When the button is clicked, it calls the function passed via props, updating the state in the parent.
 
-
 - Props Validation with PropTypes
-    1. Theory: Props Validation with PropTypes in React
 
-        PropTypes is a mechanism in React for validating the props that are passed to components. It helps catch bugs by validating the data types of props and can also enforce whether a prop is required or optional. Key points about PropTypes:
+  1.  Theory: Props Validation with PropTypes in React
 
-        - It's a type checking library for React props
-        - Helps developers catch errors early in development
-        - Provides clear warnings in the console when props don't match the expected types
-        - Can specify if a prop is required or optional
-        - Supports a wide range of JavaScript types and custom validators
+      PropTypes is a mechanism in React for validating the props that are passed to components. It helps catch bugs by validating the data types of props and can also enforce whether a prop is required or optional. Key points about PropTypes:
 
-    2. Code Example:
-        Let's create a React component that demonstrates the use of PropTypes:
+      - It's a type checking library for React props
+      - Helps developers catch errors early in development
+      - Provides clear warnings in the console when props don't match the expected types
+      - Can specify if a prop is required or optional
+      - Supports a wide range of JavaScript types and custom validators
 
-            import React from 'react'
-            import PropTypes from 'prop-types'
+  2.  Code Example:
+      Let's create a React component that demonstrates the use of PropTypes:
 
-            function UserProfile({ name, age, email, isStudent, courses }) {
-            return (
-                <div className="bg-white p-6 rounded-lg shadow-md">
-                <h2 className="text-2xl font-bold mb-4">{name}'s Profile</h2>
-                <p className="mb-2"><strong>Age:</strong> {age}</p>
-                <p className="mb-2"><strong>Email:</strong> {email}</p>
-                <p className="mb-2"><strong>Student:</strong> {isStudent ? 'Yes' : 'No'}</p>
-                {isStudent && (
-                    <div>
-                    <strong>Courses:</strong>
-                    <ul className="list-disc list-inside">
-                        {courses.map((course, index) => (
-                        <li key={index}>{course}</li>
-                        ))}
-                    </ul>
-                    </div>
-                )}
-                </div>
-            )
-            }
+          import React from 'react'
+          import PropTypes from 'prop-types'
 
-            UserProfile.propTypes = {
-            name: PropTypes.string.isRequired,
-            age: PropTypes.number,
-            email: PropTypes.string.isRequired,
-            isStudent: PropTypes.bool,
-            courses: PropTypes.arrayOf(PropTypes.string)
-            }
+          function UserProfile({ name, age, email, isStudent, courses }) {
+          return (
+              <div className="bg-white p-6 rounded-lg shadow-md">
+              <h2 className="text-2xl font-bold mb-4">{name}'s Profile</h2>
+              <p className="mb-2"><strong>Age:</strong> {age}</p>
+              <p className="mb-2"><strong>Email:</strong> {email}</p>
+              <p className="mb-2"><strong>Student:</strong> {isStudent ? 'Yes' : 'No'}</p>
+              {isStudent && (
+                  <div>
+                  <strong>Courses:</strong>
+                  <ul className="list-disc list-inside">
+                      {courses.map((course, index) => (
+                      <li key={index}>{course}</li>
+                      ))}
+                  </ul>
+                  </div>
+              )}
+              </div>
+          )
+          }
 
-            UserProfile.defaultProps = {
-            age: 0,
-            isStudent: false,
-            courses: []
-            }
+          UserProfile.propTypes = {
+          name: PropTypes.string.isRequired,
+          age: PropTypes.number,
+          email: PropTypes.string.isRequired,
+          isStudent: PropTypes.bool,
+          courses: PropTypes.arrayOf(PropTypes.string)
+          }
 
-            export default function PropTypesDemo() {
-            return (
-                <div className="max-w-md mx-auto mt-10">
-                <h1 className="text-3xl font-bold mb-4">PropTypes Validation Demo</h1>
-                <UserProfile 
-                    name="Alice Johnson"
-                    age={28}
-                    email="alice@example.com"
-                    isStudent={true}
-                    courses={["React", "Node.js", "GraphQL"]}
-                />
-                </div>
-            )
-            }
-        
-    This example demonstrates several key features of PropTypes:
+          UserProfile.defaultProps = {
+          age: 0,
+          isStudent: false,
+          courses: []
+          }
 
-    1. Importing PropTypes: We import the PropTypes library.
-    2. Defining PropTypes: We define the expected types for each prop in `UserProfile.propTypes`.
-    3. Required props: `name` and `email` are marked as required using `isRequired`.
-    4. Optional props: `age`, `isStudent`, and `courses` are optional.
-    5. Array validation: `courses` is defined as an array of strings.
-    6. Default props: We set default values for optional props using `UserProfile.defaultProps`.
+          export default function PropTypesDemo() {
+          return (
+              <div className="max-w-md mx-auto mt-10">
+              <h1 className="text-3xl font-bold mb-4">PropTypes Validation Demo</h1>
+              <UserProfile
+                  name="Alice Johnson"
+                  age={28}
+                  email="alice@example.com"
+                  isStudent={true}
+                  courses={["React", "Node.js", "GraphQL"]}
+              />
+              </div>
+          )
+          }
+
+  This example demonstrates several key features of PropTypes:
+
+  1. Importing PropTypes: We import the PropTypes library.
+  2. Defining PropTypes: We define the expected types for each prop in `UserProfile.propTypes`.
+  3. Required props: `name` and `email` are marked as required using `isRequired`.
+  4. Optional props: `age`, `isStudent`, and `courses` are optional.
+  5. Array validation: `courses` is defined as an array of strings.
+  6. Default props: We set default values for optional props using `UserProfile.defaultProps`.
