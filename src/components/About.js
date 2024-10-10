@@ -37,7 +37,7 @@ function About() {
         animation: "fadeIn 0.5s ease-in-out",
       }}
     >
-      <h2 className="text-center text-primary display-2">About Us</h2>
+      <h2 className="text-center text-primary display-2">About TextUtils</h2>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item" style={myStyle}>
           <h2 className="accordion-header">
@@ -50,7 +50,7 @@ function About() {
               aria-expanded="true"
               aria-controls="collapseOne"
             >
-              Accordion Item #1
+              What is TextUtils?
             </button>
           </h2>
           <div
@@ -59,11 +59,7 @@ function About() {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              <strong>This is the first item's accordion body.</strong> It is
-              shown by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions.
+              <strong>TextUtils is a utility which can be used to manipulate your text content in your own way</strong>
             </div>
           </div>
         </div>
@@ -79,7 +75,7 @@ function About() {
               aria-expanded="false"
               aria-controls="collapseTwo"
             >
-              Accordion Item #2
+              How to use TextUtils?
             </button>
           </h2>
           <div
@@ -88,9 +84,7 @@ function About() {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              <strong>This is the second item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element.
+              <strong>TextUtils provides an easy-to-use interface for manipulating text. You can use it to convert your text to uppercase, lowercase, or title case, as well as to remove extra whitespace and punctuation. You can also use it to convert your text to a URL-safe format, to escape special characters, and to check whether a string contains a particular substring.</strong>
             </div>
           </div>
         </div>
@@ -106,7 +100,7 @@ function About() {
               aria-expanded="false"
               aria-controls="collapseThree"
             >
-              Accordion Item #3
+              Why TextUtils?
             </button>
           </h2>
           <div
@@ -115,9 +109,7 @@ function About() {
             data-bs-parent="#accordionExample"
           >
             <div className="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is
-              hidden by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element.
+              <strong>TextUtils is a useful tool for anyone who works with text. Whether you're a developer, a writer, or just someone who likes to play with words, TextUtils makes it easy to manipulate and analyze text. It's also a great tool for learning about the different methods of manipulating text in JavaScript.</strong>
             </div>
           </div>
         </div>
