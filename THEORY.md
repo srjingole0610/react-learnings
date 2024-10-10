@@ -55,7 +55,7 @@
      4. Simpler syntax and easier to understand
      5. Preferred in modern React development
 
-  1. Class Components:
+  2. Class Components:
 
      1. Also known as stateful components
      2. Written as ES6 classes
@@ -656,3 +656,54 @@ We'll focus on the first two methods as they are the most common and fundamental
         4. Mouse events with `onMouseEnter` and `onMouseLeave`
         5. Using state to track event-related data (click count, input value, hover state)
         6. Accessing the event object in event handlers
+
+
+- Two-Way Data Binding
+
+    1. Theory:
+        Two-Way Data Binding in React refers to the synchronization of data between a component's state and its UI elements, such as form inputs. It allows changes in the UI to update the component's state and vice versa. While React doesn't have built-in two-way binding like some other frameworks, we can achieve this effect using a combination of state and event handlers.
+
+        In React, data typically flows in one direction: from parent to child components via props. Two-way binding creates a loop where:
+
+        1. The state is passed to the UI element as a prop
+        2. User interaction with the UI element triggers an event
+        3. The event handler updates the state
+        4. The updated state is reflected back in the UI
+    
+   2. Code Example: 
+
+            'use client'
+            import { useState } from 'react'
+            import { Input } from "@/components/ui/input"
+            import { Label } from "@/components/ui/label"
+
+            export default function TwoWayBindingDemo() {
+            const [inputValue, setInputValue] = useState('')
+
+            const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+                setInputValue(event.target.value)
+            }
+
+            return (
+                <div className="p-4 max-w-sm mx-auto">
+                <div className="mb-4">
+                    <Label htmlFor="input-demo">Enter some text:</Label>
+                    <Input
+                    id="input-demo"
+                    type="text"
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    className="mt-1"
+                    />
+                </div>
+                <p className="text-lg">You typed: <strong>{inputValue}</strong></p>
+                </div>
+            )
+            }
+        
+    In this example:
+
+    - We use the `useState` hook to create a state variable `inputValue` and its setter function `setInputValue`.
+    - The `Input` component's `value` prop is set to `inputValue`, displaying the current state.
+    - The `onChange` event handler `handleInputChange` updates the state when the input changes.
+    - The paragraph below the input displays the current state, demonstrating the two-way binding.
