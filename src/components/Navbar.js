@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 function Navbar(props) {
   return (
@@ -6,9 +7,13 @@ function Navbar(props) {
       className={`navbar navbar-expand-lg bg-${props.mode} navbar-${props.mode} shadow-lg rounded-3`}
     >
       <div className="container-fluid py-2 px-4">
-        <a className={`navbar-brand text-${props.mode === 'light' ? 'dark' : 'light'} fw-bold fs-3`} href="/">
+        {/* Use Link for routing */}
+        <Link
+          className={`navbar-brand text-${props.mode === 'light' ? 'dark' : 'light'} fw-bold fs-3`}
+          to="/"
+        >
           {props.title}
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -23,25 +28,27 @@ function Navbar(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">
+              {/* Use Link for routing */}
+              <Link className="nav-link active" aria-current="page" to="/">
                 {props.homeText}
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              {/* Use Link for routing */}
+              <Link className="nav-link" to="/about">
                 {props.aboutText}
-              </a>
+              </Link>
             </li>
           </ul>
           <form className="d-flex" role="search">
             <input
-              className={`form-control me-2 border-1 rounded-3 bg-light text-${props.mode === 'light' ? 'dark' : 'light'}` }
+              className={`form-control me-2 border-1 rounded-3 bg-light text-${props.mode === 'light' ? 'dark' : 'light'}`}
               type="search"
               placeholder="Search"
               aria-label="Search"
             />
             <button
-              className={`btn btn-outline-${props.mode === 'light' ? 'light' : 'dark'} border-0 rounded-3  text-${props.mode === 'light' ? 'dark' : 'light'}`}
+              className={`btn btn-outline-${props.mode === 'light' ? 'light' : 'dark'} border-0 rounded-3 text-${props.mode === 'light' ? 'dark' : 'light'}`}
               type="submit"
             >
               {props.search}
@@ -55,7 +62,10 @@ function Navbar(props) {
               role="switch"
               id="flexSwitchCheckDefault"
             />
-            <label className={`form-check-label text-${props.mode === 'light' ? 'dark' : 'light'} ms-2`} htmlFor="flexSwitchCheckDefault">
+            <label
+              className={`form-check-label text-${props.mode === 'light' ? 'dark' : 'light'} ms-2`}
+              htmlFor="flexSwitchCheckDefault"
+            >
               Enable Dark Mode
             </label>
           </div>
@@ -80,5 +90,3 @@ Navbar.defaultProps = {
 };
 
 export default Navbar;
-
-

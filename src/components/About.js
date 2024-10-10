@@ -1,45 +1,49 @@
 import React, { useState } from "react";
 
 function About() {
+  const [myStyle, setMyStyle] = useState({
+    color: 'white',
+    backgroundColor: 'black',
+  });
 
-    const[myStyle,setMyStyle] =  useState(  {
+  const [btnText, setBtnText] = useState("Enable Light Mode");
+
+  const toggleStyle = () => {
+    if (myStyle.color === 'white') {
+      setMyStyle({
+        color: 'black',
+        backgroundColor: 'white',
+        border: '1px solid black',
+      });
+      setBtnText("Enable Dark Mode");
+    } else {
+      setMyStyle({
         color: 'white',
-        backgroundColor: 'black'
-    })
+        backgroundColor: 'black',
+        border: '1px solid white',
+      });
+      setBtnText("Enable Light Mode");
+    }
+  };
 
-   const [btnText, setBtnText] = useState("Set Mode")
-    
-  const toggleStyle = ()=>{
-    if(myStyle.color === 'white'){
-        setMyStyle({
-            color: 'black',
-            backgroundColor: 'white',
-            border:'1px solid black'
-        })
-        setBtnText("Enable Dark Mode")
-    }
-    else{
-        setMyStyle({
-            color: 'white',
-            backgroundColor: 'black',
-            border:'1px solid white'
-        })
-        setBtnText("Enable Light Mode")
-    }
-  }
   return (
-    <div className="container my-3 rounded-3 shadow-lg" style={{
-      ...myStyle,
-      boxShadow: "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
-      transition: "all 0.3s ease-in-out",
-      animation: "fadeIn 0.5s ease-in-out"
-    }}>
+    <div
+      className="container my-3 rounded-3 shadow-lg"
+      style={{
+        ...myStyle,
+        boxShadow:
+          "0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)",
+        transition: "all 0.3s ease-in-out",
+        animation: "fadeIn 0.5s ease-in-out",
+      }}
+    >
       <h2 className="text-center text-primary display-2">About Us</h2>
       <div className="accordion" id="accordionExample">
         <div className="accordion-item" style={myStyle}>
           <h2 className="accordion-header">
             <button
-              className="accordion-button"style={myStyle}
+              className="accordion-button"
+              style={myStyle}
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseOne"
@@ -59,17 +63,16 @@ function About() {
               shown by default, until the collapse plugin adds the appropriate
               classes that we use to style each element. These classes control
               the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              transitions.
             </div>
           </div>
         </div>
+
         <div className="accordion-item" style={myStyle}>
           <h2 className="accordion-header">
             <button
-              className="accordion-button collapsed" style={myStyle}
+              className="accordion-button collapsed"
+              style={myStyle}
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseTwo"
@@ -87,19 +90,16 @@ function About() {
             <div className="accordion-body">
               <strong>This is the second item's accordion body.</strong> It is
               hidden by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              classes that we use to style each element.
             </div>
           </div>
         </div>
+
         <div className="accordion-item" style={myStyle}>
           <h2 className="accordion-header">
             <button
-              className="accordion-button collapsed" style={myStyle}
+              className="accordion-button collapsed"
+              style={myStyle}
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapseThree"
@@ -117,16 +117,12 @@ function About() {
             <div className="accordion-body">
               <strong>This is the third item's accordion body.</strong> It is
               hidden by default, until the collapse plugin adds the appropriate
-              classes that we use to style each element. These classes control
-              the overall appearance, as well as the showing and hiding via CSS
-              transitions. You can modify any of this with custom CSS or
-              overriding our default variables. It's also worth noting that just
-              about any HTML can go within the <code>.accordion-body</code>,
-              though the transition does limit overflow.
+              classes that we use to style each element.
             </div>
           </div>
         </div>
       </div>
+
       <div className="d-flex flex-column align-items-center p-3">
         <button
           type="button"
@@ -145,10 +141,7 @@ function About() {
         </button>
       </div>
     </div>
-
   );
 }
 
 export default About;
-
-
