@@ -55,7 +55,7 @@
      4. Simpler syntax and easier to understand
      5. Preferred in modern React development
 
-  1. Class Components:
+  2. Class Components:
 
      1. Also known as stateful components
      2. Written as ES6 classes
@@ -565,3 +565,145 @@ We'll focus on the first two methods as they are the most common and fundamental
         - Updating state in response to user actions (button clicks)
         - Using lifecycle methods (Class) and hooks (Functional) to perform side effects
         - Rendering state in the component's output
+
+- Handling Events
+
+  1.  Theory: Handling Events in React
+
+      - Event handling in React is similar to handling events in DOM, but with some syntactical differences:
+
+        - React events are named using camelCase (e.g., onClick instead of onclick)
+        - Event handlers are passed as functions rather than strings
+        - You can't return false to prevent default behavior; you must call preventDefault explicitly
+        - React uses a synthetic event system for consistent behavior across browsers
+        - Event handlers have access to the React event object, which is a wrapper around the native event
+
+  2.  Code Example:
+
+      - Let's create a React component that demonstrates various event handling techniques:
+
+              import React, { useState } from 'react'
+              export default function EventHandlingDemo() {
+              const [clickCount, setClickCount] = useState(0)
+              const [inputValue, setInputValue] = useState('')
+              const [isHovering, setIsHovering] = useState(false)
+
+              const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+                  setClickCount(prevCount => prevCount + 1)
+                  console.log('Button clicked!', event.clientX, event.clientY)
+              }
+
+              const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+                  setInputValue(event.target.value)
+              }
+
+              const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+                  event.preventDefault()
+                  alert(`Form submitted with value: ${inputValue}`)
+              }
+
+              const handleMouseEnter = () => setIsHovering(true)
+              const handleMouseLeave = () => setIsHovering(false)
+
+              return (
+                  <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-md">
+                  <h1 className="text-2xl font-bold mb-4">Event Handling in React</h1>
+
+                  <div className="mb-6">
+                      <button
+                      onClick={handleClick}
+                      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                      >
+                      Click me!
+                      </button>
+                      <p className="mt-2">Button clicked {clickCount} times</p>
+                  </div>
+
+                  <form onSubmit={handleSubmit} className="mb-6">
+                      <input
+                      type="text"
+                      value={inputValue}
+                      onChange={handleChange}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="Type something..."
+                      />
+                      <button
+                      type="submit"
+                      className="mt-2 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
+                      >
+                      Submit
+                      </button>
+                  </form>
+
+                  <div
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                      className={`p-4 rounded transition-colors duration-300 ${
+                      isHovering ? 'bg-yellow-200' : 'bg-gray-200'
+                      }`}
+                  >
+                      Hover over me!
+                  </div>
+                  </div>
+              )
+              }
+
+      - This example demonstrates several key concepts of event handling in React:
+
+        1. Click events with `onClick`
+        2. Form input handling with `onChange`
+        3. Form submission with `onSubmit` and `preventDefault()`
+        4. Mouse events with `onMouseEnter` and `onMouseLeave`
+        5. Using state to track event-related data (click count, input value, hover state)
+        6. Accessing the event object in event handlers
+
+
+- Two-Way Data Binding
+
+    1. Theory:
+        Two-Way Data Binding in React refers to the synchronization of data between a component's state and its UI elements, such as form inputs. It allows changes in the UI to update the component's state and vice versa. While React doesn't have built-in two-way binding like some other frameworks, we can achieve this effect using a combination of state and event handlers.
+
+        In React, data typically flows in one direction: from parent to child components via props. Two-way binding creates a loop where:
+
+        1. The state is passed to the UI element as a prop
+        2. User interaction with the UI element triggers an event
+        3. The event handler updates the state
+        4. The updated state is reflected back in the UI
+    
+   2. Code Example: 
+
+            'use client'
+            import { useState } from 'react'
+            import { Input } from "@/components/ui/input"
+            import { Label } from "@/components/ui/label"
+
+            export default function TwoWayBindingDemo() {
+            const [inputValue, setInputValue] = useState('')
+
+            const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+                setInputValue(event.target.value)
+            }
+
+            return (
+                <div className="p-4 max-w-sm mx-auto">
+                <div className="mb-4">
+                    <Label htmlFor="input-demo">Enter some text:</Label>
+                    <Input
+                    id="input-demo"
+                    type="text"
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    className="mt-1"
+                    />
+                </div>
+                <p className="text-lg">You typed: <strong>{inputValue}</strong></p>
+                </div>
+            )
+            }
+        
+    In this example:
+
+    - We use the `useState` hook to create a state variable `inputValue` and its setter function `setInputValue`.
+    - The `Input` component's `value` prop is set to `inputValue`, displaying the current state.
+    - The `onChange` event handler `handleInputChange` updates the state when the input changes.
+    - The paragraph below the input displays the current state, demonstrating the two-way binding.

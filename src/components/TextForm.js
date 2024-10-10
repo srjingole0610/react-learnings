@@ -15,6 +15,7 @@ function TextForm(props) {
     console.log("Upper handle clicked")
     let newText = text.toUpperCase();
     setText(newText)
+    props.showAlerts("Word converted into UpperCase", "success")
 
     setTimeout(() => {
       setText(oldText);
@@ -26,6 +27,7 @@ function TextForm(props) {
     console.log("Upper handle clicked")
     let newText = text.toLowerCase();
     setText(newText)
+    props.showAlerts("Word converted into Lowercase", "success")
 
     setTimeout(() => {
       setText(oldText);
@@ -40,12 +42,14 @@ function TextForm(props) {
     console.log("Clear handle clicked")
     setText("")
     document.getElementById("myBox").value = "";
+    props.showAlerts("TextArea has been cleared", "success")
   }
 
   const handleCopyText = ()=>{
     let text = document.getElementById("myBox");
     text.select();
     navigator.clipboard.writeText(text.value);
+    props.showAlerts("Text copied to clipboard!!", "success")
   }
 
   return (
